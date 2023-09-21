@@ -1,0 +1,35 @@
+@startuml
+
+class Paleta {
+    +sabor: String
+    +precio: double
+    +base: boolean
+    {abstract} +Paleta(sabor: String, precio: double, base: boolean)
+    +mostrarInformacion(): void
+    +paletaGrandeOChica(): void
+    {abstract} +mostrarBase(): void
+    {abstract} +nuevoPrecio(): void
+}
+
+class PaletaAgua {
+    {abstract} +PaletaAgua(sabor: String, precio: double, base: boolean)
+    +mostrarBase(): void
+    +nuevoPrecio(): void
+}
+
+class PaletaCrema {
+    {abstract} +PaletaCrema(sabor: String, precio: double, base: boolean)
+    +mostrarBase(): void
+    +nuevoPrecio(): void
+}
+
+class IllegalArgumentException {
+    +IllegalArgumentException(message: String)
+}
+
+Paleta <|-- PaletaAgua
+Paleta <|-- PaletaCrema
+
+Paleta ..> IllegalArgumentException
+
+@enduml
